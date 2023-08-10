@@ -1,6 +1,10 @@
 
 const express= require('express')
-const  {getStudentData} =require('..//controller/UserController')
+// const  getStudentData =require('..//controller/UserController')
+// const  getStudentname =require('..//controller/UserController')
+// const  addStud =require('..//controller/UserController')
+//  const  deletedata =require('..//controller/UserController')
+ const userController = require('../controller/userController');
 const Router=  express.Router();
 
 //  route1
@@ -21,7 +25,15 @@ Router.get('/live',(req,res)=>{
     })
 })
 
-Router.get('/getdata',getStudentData)
+ Router.get('/getdata',userController.getStudentData)
+ Router.get('/getnameonly',userController.getStudentname)
+
+  Router.post('/adddata',userController.addStud);
+
+  Router.delete('/del/:id', userController.deletedata)
+
+
+ 
 
 module.exports=Router
 

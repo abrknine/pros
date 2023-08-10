@@ -42,6 +42,9 @@ const express = require('express')
 const  app =express()
 const connection =require('./config/db')
 
+//middleware  //for post req
+app.use(express.json());
+app.use(express.urlencoded({ extended: false })); 
 
 // connect db
 connection.connect();
@@ -49,7 +52,7 @@ console.log("db connected")
 
 
 //routes
-const  UserRoutes= require('./Routes/UserRoutes')
+const  UserRoutes= require('./routes/UserRoutes')
 app.use('/' , UserRoutes)
 
 
